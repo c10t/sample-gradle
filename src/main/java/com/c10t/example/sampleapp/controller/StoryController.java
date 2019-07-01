@@ -1,5 +1,7 @@
 package com.c10t.example.sampleapp.controller;
 
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +18,9 @@ import com.c10t.example.sampleapp.domain.entity.StoryEntity;
 @RequiredArgsConstructor
 public class StoryController {
 
-  @Autowired
   private final StoryService storyService;
 
-  @RequestMapping("/")
+  @RequestMapping({"", "/"})
   public List<StoryEntity> findAll() {
     return storyService.findAll();
   }

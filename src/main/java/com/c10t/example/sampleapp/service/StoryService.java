@@ -14,7 +14,6 @@ import com.c10t.example.sampleapp.domain.repository.StoryRepository;
 @RequiredArgsConstructor
 public class StoryService {
 
-  @Autowired
   private final StoryRepository repo;
 
   public List<StoryEntity> findAll() {
