@@ -1,8 +1,14 @@
 version: '3'
 
 services:
-  sample-app:
-    build: .
-    image: sample-app:latest
+  ap:
+    build:
+      context: .
     ports:
       - "8080:8080"
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./_postgres/init:/docker-entrypoint-initdb.d
