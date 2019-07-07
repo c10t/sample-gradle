@@ -24,4 +24,7 @@ public class StoryController {
   public List<StoryEntity> findAll() {
     return storyService.findAll();
   }
+
+  @RequestMapping(path = "/bulk", method = RequestMethod.POST)
+  public void bulkUpsert() {}
 }
