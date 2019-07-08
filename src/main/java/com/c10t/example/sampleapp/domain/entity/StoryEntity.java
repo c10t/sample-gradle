@@ -1,10 +1,14 @@
 package com.c10t.example.sampleapp.domain.entity;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -32,4 +36,21 @@ public class StoryEntity {
 
   @Column(name="score")
   private Integer score;
+
+  @Column(name="insert_at", nullable = false, updatable = false)
+  private OffsetDateTime insertAt;
+
+  @Column(name="update_at", nullable = false)
+  private OffsetDateTime updateAt;
+
+  @PrePersist
+  public void onPrePersist() {
+    setInsertAt(OffsetDateTime.now());
+    setUpdateAt(OffsetDateTime.now());
+  }
+
+  @PreUpdate
+  public void onPreUpdate() {
+    setUpdateAt(OffsetDateTime.now());
+  }
 }
