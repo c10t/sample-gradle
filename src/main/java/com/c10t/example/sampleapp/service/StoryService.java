@@ -19,4 +19,8 @@ public class StoryService {
   public List<StoryEntity> findAll() {
     return repo.findAll();
   }
+
+  public List<StoryEntity> saveAll(List<StoryEntity> stories) {
+    return repo.saveAll(stories);
+  }
 }

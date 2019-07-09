@@ -25,6 +25,14 @@ public class StoryController {
     return storyService.findAll();
   }
 
-  @RequestMapping(path = "/bulk", method = RequestMethod.POST)
-  public void bulkUpsert() {}
+  @RequestMapping("/{id}")
+  public StoryEntity findById(@PathVariable String id) {
+    return storyService.findAll().get(0);
+  }
+
+  @RequestMapping(path = "/bulk-insert", method = RequestMethod.POST)
+  public BulkInsertResponseVo bulkInsert(@RequestBody BulkInsertRequestVo req) {
+    storyService.saveAll(req.getStories());
+    return BulkInsertResponseVo.builder().result("SUCCESS").build();
+  }
 }
